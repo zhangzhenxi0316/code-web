@@ -30,13 +30,11 @@ class Registry extends Component {
     let data = {
       password:this.state.password,
       email:this.state.email,
-
+      nick_name:this.state.username
     }
-    if(this.state.role){
-      // 老师
-      data.nick_name = this.state.username
-    }else{
-data.stuId = this.state.stuId
+    if(this.state.role===1){
+      // 学生
+      data.stuId = this.state.stuId
     }
     axios.request({
       url: "/registry",
@@ -209,7 +207,7 @@ data.stuId = this.state.stuId
               </Link>
             </div>
           </Header>
-          {role === 0 && (
+          
             <Item>
               <span className="item_name">昵称</span>
               <div className="inputWrapper">
@@ -223,7 +221,7 @@ data.stuId = this.state.stuId
                 />
               </div>
             </Item>
-          )}
+          
           {role === 1 && (
             <Item>
               <span className="item_name">学号</span>
