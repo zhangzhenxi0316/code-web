@@ -7,7 +7,7 @@ import styled from 'styled-components'
 // height:100vh;
 
 // `
-export const LoginWrapper = styled.div`
+export const LoginWrapper = styled.form`
 width:400px;
 /* height:700px; */
 background:#e4e4e4;

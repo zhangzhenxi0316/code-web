@@ -3,6 +3,7 @@ import "./Login.css";
 import Particles from 'react-particles-js';
 import {Link} from 'react-router-dom'
 import {LoginWrapper,Header,Tab,Item,Btn} from './Login'
+import axios from 'axios'
 class Login extends Component {
     constructor(props){
         super(props)
@@ -15,6 +16,13 @@ class Login extends Component {
         this.handleUsernameChange = this.handleUsernameChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
 
+    }
+    handleLoginSubmit(e){
+      e.preventDefault()
+      axios.request({url:'/login',method:'POST',data:{
+        nick_name:this.state.username,
+        password:this.state.password
+      }})
     }
     handleUsernameChange(e){
       // console.log( e.target.value)
@@ -152,7 +160,7 @@ class Login extends Component {
                 backgroundColor: "#3F9497" 
               }}
             />
-            <LoginWrapper>
+            <LoginWrapper onSubmit={this.handleLoginSubmit}>
                 <Header>
                   <div className="tab">
                   <Link to="/login">
@@ -179,7 +187,7 @@ class Login extends Component {
                     </div>
                 </Item>
                 <Btn>
-                  <div className="btn">登录</div>
+                  <button className="btn">登录</button>
                 </Btn>
             </LoginWrapper>
       </div>
