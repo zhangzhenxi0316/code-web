@@ -67,4 +67,18 @@
 .select .option {
   background: red;
 }
-/*# sourceMappingURL=./Registry.css.map */
+.icon-querenzhengque {
+  color: #158015 !important;
+}
+.icon-cuowu {
+  color: red !important;
+}
+.registryStatus,
+.emailStatus {
+  position: absolute;
+  z-index: 10;
+}
+.registry:hover {
+  box-sizing: border-box;
+  border-bottom: 4px solid #3F9497;
+}

@@ -49,4 +49,7 @@
   cursor: pointer;
   outline: none;
 }
-/*# sourceMappingURL=./Login.css.map */
+.loginStatus {
+  position: absolute;
+  z-index: 10;
+}

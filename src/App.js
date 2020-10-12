@@ -17,10 +17,10 @@ class App extends Component {
       
 
       <Switch>
-          <Route path="/login">
+          <Route path="/user/login">
           <Login ></Login>
           </Route>
-          <Route path="/registry">
+          <Route path="/user/registry">
             <Registry  />
           </Route>
           

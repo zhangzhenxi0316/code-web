@@ -4,34 +4,66 @@ import Particles from 'react-particles-js';
 import {Link} from 'react-router-dom'
 import {LoginWrapper,Header,Tab,Item,Btn} from './Login'
 import axios from 'axios'
+import { Alert } from "antd";
+import {withRouter} from 'react-router-dom'
 class Login extends Component {
     constructor(props){
         super(props)
         this.state={
             username:'',
-            password:''
+            password:'',
+            loginStatus:{}
         }
         this.handleUsernameChange = this.handleUsernameChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
         this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-
+        
     }
     handleLoginSubmit(e){
-      console.dir(this.state)
-      if(this.state.username===''&&this.state.password===''){
-        alert('用户名密码为空')
+      // console.dir(this.state)
+      e.preventDefault()
+      if(this.state.username===''||this.state.password===''){
+        this.setState({
+          loginStatus:{
+            type:'warning',
+            msg:'用户名密码不能为空'
+          }
+        })
         return
       }
-      e.preventDefault()
+      
       console.log(this.state.username)
       axios.request({url: "http://localhost:8000/user/login",method:'POST',data:{
         nick_name:this.state.username,
         password:this.state.password
       }}).then(res=>{
-        alert('登录成功')
+        if(res.data.status===200){
+          this.setState({
+            loginStatus:{
+              type:'success',
+              msg:'登录成功正在跳转'
+            }
+          })
+          setTimeout(()=>{
+            this.props.history.push('/index')
+          },500)
+        }else{
+          this.setState({
+            loginStatus:{
+              type:'error',
+              msg:'用户名密码不正确'
+            }
+          })
+        }
       }).catch(err=>{
-        alert('登录失败')
+        this.setState({
+          loginStatus:{
+            type:'error',
+            msg:'登录失败'
+          }
+        })
       })
+      // console.log(data)
     }
     handleUsernameChange(e){
       // console.log( e.target.value)
@@ -50,6 +82,7 @@ class Login extends Component {
   render() {
     return (
       <div className="main" >
+        {this.state.loginStatus.msg&&<Alert  className="loginStatus" message={this.state.loginStatus.msg} type={this.state.loginStatus.type} showIcon closable onClose={()=>{this.setState({loginStatus:{}})}}/>}
           <Particles  className="body"
               params={{
             		particles: {
@@ -166,10 +199,10 @@ class Login extends Component {
             <LoginWrapper onSubmit={this.handleLoginSubmit}>
                 <Header>
                   <div className="tab">
-                  <Link to="/login">
+                  <Link to="/user/login">
                   <Tab className="login" >登录</Tab>
                   </Link>
-                  <Link to="/registry">
+                  <Link to="/user/registry">
                   <Tab >注册</Tab>
                   </Link>
                   </div>
@@ -198,4 +231,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

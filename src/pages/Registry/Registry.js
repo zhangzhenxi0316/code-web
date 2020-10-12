@@ -13,12 +13,12 @@ width:400px;
 background:#e4e4e4;
 opacity:0.8;
 // display:block;
- margin:200px auto; 
-// position:absolute;
-// z-index:2;
-// top:50%;
-// left:50%;
-// transform:translateX(-50%) translateY(-50%);
+ /* margin:200px auto;  */
+ position:absolute;
+ z-index:2;
+ top:50%;
+ left:50%;
+ transform:translateX(-50%) translateY(-50%);
 border-radius:15px;
 padding:10px 50px;
 box-sizing:border-box;

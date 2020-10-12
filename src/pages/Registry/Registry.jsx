@@ -3,7 +3,8 @@ import "./Registry.css";
 import Particles from "react-particles-js";
 import { LoginWrapper, Header, Tab, Item, Btn } from "./Registry";
 import { Link } from "react-router-dom";
-import { Select } from "antd";
+import { Select,Alert } from "antd";
+import {withRouter} from 'react-router-dom'
 import axios from "axios";
 const { Option } = Select;
 class Registry extends Component {
@@ -15,6 +16,10 @@ class Registry extends Component {
       password: "",
       role: 0,
       email: "",
+      currentPassword:'',
+      current:true,
+      registryStatus:{},
+      emailStatus:{}
     };
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -22,44 +27,112 @@ class Registry extends Component {
     this.handleStuChange = this.handleStuChange.bind(this);
     this.handleRoleChange = this.handleRoleChange.bind(this);
     this.handleRegistrySubmit = this.handleRegistrySubmit.bind(this);
+    this.handleCourrentPasswordChange = this.handleCourrentPasswordChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+  }
+  handleCourrentPasswordChange(e){
+    
+    this.setState({
+      current:e.target.value===this.state.password,
+      currentPassword:e.target.value
+    })
+
   }
   handleRegistrySubmit(e) {
-    console.dir(this.state)
-    if(this.state.username===''&&this.state.password===''&& this.state.email===''){
-      alert('请完整填写资料')
+    e.preventDefault();
+    var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    let email = this.state.email
+    
+    // console.dir(this.state)
+    if(this.state.username===''||this.state.password===''|| this.state.email===''|| this.state.currentPassword===''){
+      // console.log('asdfasdf')
+      this.setState({
+        registryStatus:{
+          type:'warning',
+          msg:'请填写完整资料'
+        }
+      })
       return
     }
-    e.preventDefault();
+   
     let data = {
       passwords:this.state.password,
       email:this.state.email,
-      nick_name:this.state.username
+      nick_name:this.state.username,
+      status:this.state.role
     }
     if(this.state.role===1){
-      if(this.stuId===''){
-        alert('请输入学号')
+      if(this.state.stuId===''){
+        this.setState({
+          registryStatus:{
+            type:'warning',
+            msg:'请填写学号'
+          }
+        })
         return
       }
       // 学生
       data.student_id = this.state.stuId.toString()
+    }
+    if(!reg.test(email)){
+      // this.handleBlur()
+      return
     }
     axios.request({
       url: "http://localhost:8000/user/registry",
       method: "POST",
       data: data,
     }).then(res=>{
-      alert('注册成功')
+      if(res.data.status===200){
+        this.setState({
+          registryStatus:{
+            type:'success',
+            msg:'注册成功'
+          }
+        })
+        setTimeout(()=>{
+          this.props.history.push('/user/login')
+        },600)
+      }else{
+        this.setState({
+          registryStatus:{
+            type:'error',
+            msg:'注册失败'
+          }
+        })
+        
+      }
     }).catch(err=>{
-      alert('注册失败')
+      this.setState({
+        registryStatus:{
+          type:'error',
+          msg:'注册失败'
+        }
+      })
     });
+    // console.log(data)
   }
   handleRoleChange(e) {
-    console.log(e);
+    // console.log(e);
     this.setState({
       role: parseInt(e),
     });
   }
+  handleBlur(){
+    var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    let email = this.state.email
+    if(!reg.test(email)){
+      this.setState({
+        emailStatus:{
+          type:'warning',
+          msg:'邮箱格式不对'
+        }
+      })
+    }
+  }
   handleEmailChange(e) {
+   
+    // console.log(reg.test(email))
     this.setState({
       email:e.target.value
     });
@@ -71,7 +144,10 @@ class Registry extends Component {
     });
   }
   handlePasswordChange(e) {
+
+   
     this.setState({
+      current:e.target.value===this.state.password,
       password: e.target.value,
     });
   }
@@ -81,12 +157,14 @@ class Registry extends Component {
     });
   }
   componentDidMount() {
-  
+    console.log(this)
   }
   render() {
-    let {  role } = this.state;
+    let {  role ,current} = this.state;
     return (
       <div className="main">
+        {this.state.registryStatus.msg&&<Alert  className="registryStatus" message={this.state.registryStatus.msg} type={this.state.registryStatus.type} showIcon closable onClose={()=>{this.setState({registryStatus:{}})}}/>}
+        {this.state.emailStatus.msg&&<Alert className="emailStatus" message={this.state.emailStatus.msg} type={this.state.emailStatus.type} showIcon  closable closable onClose={()=>{this.setState({emailStatus:{}})}}/>}
          <Particles  className="body"
               params={{
             		particles: {
@@ -206,10 +284,10 @@ class Registry extends Component {
         <LoginWrapper onSubmit={this.handleRegistrySubmit}>
           <Header>
             <div className="tab">
-              <Link to="/login">
-                <Tab>登录</Tab>
+              <Link to="/user/login">
+                <Tab >登录</Tab>
               </Link>
-              <Link to="/registry">
+              <Link to="/user/registry">
                 <Tab className="registry">注册</Tab>
               </Link>
             </div>
@@ -258,6 +336,20 @@ class Registry extends Component {
             </div>
           </Item>
           <Item>
+            <span className="item_name">确认密码</span>
+            <div className="inputWrapper">
+             
+              <input
+                className="input"
+                type="password"
+                onChange={this.handleCourrentPasswordChange}
+                value={this.state.currentPassword}
+                placeholder="请输入确认密码"
+              />
+              {this.state.currentPassword.length>0&&<i className={current?"iconfont icon-querenzhengque":" iconfont icon-cuowu"}></i>}
+            </div>
+          </Item>
+          <Item>
             <span className="item_name">邮箱</span>
             <div className="inputWrapper">
               {/* <i className="iconfont">&#xe7b8;</i> */}
@@ -267,6 +359,7 @@ class Registry extends Component {
                 onChange={this.handleEmailChange}
                 value={this.state.email}
                 placeholder="请输入邮箱"
+                onBlur={this.handleBlur}
               />
             </div>
           </Item>
@@ -295,4 +388,4 @@ class Registry extends Component {
   }
 }
 
-export default Registry;
+export default withRouter(Registry);
