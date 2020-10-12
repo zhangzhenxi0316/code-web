@@ -15,14 +15,16 @@ class Login extends Component {
         }
         this.handleUsernameChange = this.handleUsernameChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
 
     }
     handleLoginSubmit(e){
       e.preventDefault()
-      axios.request({url:'/login',method:'POST',data:{
-        nick_name:this.state.username,
-        password:this.state.password
-      }})
+      console.log(this.state.username)
+      // axios.request({url:'/login',method:'POST',data:{
+        // nick_name:this.state.username,
+        // password:this.state.password
+      // }})
     }
     handleUsernameChange(e){
       // console.log( e.target.value)
@@ -49,7 +51,7 @@ class Login extends Component {
               params={{
             		particles: {
             			line_linked: {
-                    opacity:0.2,
+                    opacity:0.3,
             				shadow: {
             					enable: false,
             					color: "#fff",

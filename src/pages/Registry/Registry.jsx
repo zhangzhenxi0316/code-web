@@ -28,13 +28,13 @@ class Registry extends Component {
   handleRegistrySubmit(e) {
     e.preventDefault();
     let data = {
-      password:this.state.password,
+      passwords:this.state.password,
       email:this.state.email,
       nick_name:this.state.username
     }
     if(this.state.role===1){
       // 学生
-      data.stuId = this.state.stuId
+      data.student_id = this.state.stuId
     }
     axios.request({
       url: "/registry",
@@ -83,119 +83,122 @@ class Registry extends Component {
     let { username, password, stuId, role } = this.state;
     return (
       <div className="main">
-        <Particles
-          className="body"
-          params={{
-            particles: {
-              line_linked: {
-                opacity: 0.2,
-                shadow: {
-                  enable: false,
-                  color: "#fff",
-                  blur: 15,
-                  opacity: 0.5,
-                },
-              },
-              number: {
-                value: 120,
-                density: {
-                  enable: true,
-                  value_area: 1000,
-                },
-              },
-              color: {
-                value: "#ccc",
-              },
-              shape: {
-                type: "circle",
-                stroke: {
-                  width: 0,
-                  color: "#1C5497",
-                },
-                polygon: {
-                  nb_sides: 3,
-                },
-              },
-              opacity: {
-                value: 0,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 1,
-                  opacity_min: 0,
-                  sync: false,
-                },
-              },
-              size: {
-                value: 5,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 5,
-                  size_min: 0.1,
-                  sync: false,
-                },
-              },
-              move: {
-                enable: true,
-                speed: 4,
-                direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "bounce",
-                bounce: false,
-                attract: {
-                  enable: true,
-                  rotateX: 200,
-                  rotateY: 90,
-                },
-              },
-            },
-            interactivity: {
-              detect_on: "canvas",
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: ["bubble"],
-                  line_linked: {
-                    opacity: 1,
+         <Particles  className="body"
+              params={{
+            		particles: {
+            			line_linked: {
+                    opacity:0.2,
+            				shadow: {
+            					enable: false,
+            					color: "#fff",
+                      blur: 15,
+                      opacity:0.5
+            				}
                   },
-                },
-              },
-              modes: {
-                grab: {
-                  distance: 150,
-                  line_linked: {
-                    opacity: 1,
+                  number: {
+                    value: 120,
+                    density: {
+                      enable: true,
+                      value_area: 1000
+                    }
                   },
+                  color: {
+                    value: "#ccc"
+                  },
+                  "shape": {
+                    "type": "circle",
+                    "stroke": {
+                      "width": 0,
+                      "color": "#1C5497"
+                    },
+                    "polygon": {
+                      "nb_sides": 3
+                    }
+                  },
+                  "opacity": {
+                    "value": 0,
+                    "random": true,
+                    "anim": {
+                      "enable": true,
+                      "speed": 1,
+                      "opacity_min": 0,
+                      "sync": false
+                    }
+                  },
+                  "size": {
+                    "value": 5,
+                    "random": true,
+                    "anim": {
+                      "enable": true,
+                      "speed": 5,
+                      "size_min": 0.1,
+                      "sync": false
+                    }
+                  },
+                  "move": {
+                    "enable": true,
+                    "speed": 4,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "bounce",
+                    "bounce": false,
+                    "attract": {
+                      "enable": true,
+                      "rotateX": 200,
+                      "rotateY": 90
+                    }
+                  },
+                  
+                
+          
                 },
-                bubble: {
-                  distance: 300,
-                  size: 10,
-                  duration: 1,
-                  opacity: 0.8,
-                  speed: 3,
+                "interactivity": {
+                  "detect_on": "canvas",
+                  "events": {
+                    "onhover": {
+                      "enable": true,
+                      "mode": ["bubble"],
+                      "line_linked":{
+                        "opacity":1
+                      }
+                    }
+                  },
+                  "modes": {
+                    "grab": {
+                      "distance": 150,
+                      "line_linked": {
+                        "opacity": 1
+                      }
+                    },
+                    "bubble": {
+                      "distance": 300,
+                      "size": 10,
+                      "duration": 1,
+                      "opacity": 0.8,
+                      "speed": 3
+                    },
+                    "repulse": {
+                      "distance": 60,
+                      "duration": 0.4
+                    },
+                    "push": {
+                      "particles_nb": 20
+                    },
+                    "remove": {
+                      "particles_nb": 20
+                    }
+                  }
                 },
-                repulse: {
-                  distance: 60,
-                  duration: 0.4,
-                },
-                push: {
-                  particles_nb: 20,
-                },
-                remove: {
-                  particles_nb: 20,
-                },
-              },
-            },
-            retina_detect: true,
-          }}
-          style={{
-            width: this.state.width,
-            height: this.state.height,
-            backgroundColor: "#3F9497",
-          }}
-        />
+                retina_detect:false
+            	}}
+              style={{
+                // width: this.state.width,
+                // height:this.state.height,
+                backgroundColor: "rgb(63,148,151)" ,
+                // opacity:'.2'
+              }}
+            />
         <LoginWrapper onSubmit={this.handleRegistrySubmit}>
           <Header>
             <div className="tab">
@@ -282,6 +285,7 @@ class Registry extends Component {
             <button className="btn">注册</button>
           </Btn>
         </LoginWrapper>
+      
       </div>
     );
   }
