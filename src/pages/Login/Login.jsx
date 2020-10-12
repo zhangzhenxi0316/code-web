@@ -19,12 +19,20 @@ class Login extends Component {
 
     }
     handleLoginSubmit(e){
+      if(this.state.username===''&&this.state.password===''){
+        alert('用户名密码为空')
+        return
+      }
       e.preventDefault()
       console.log(this.state.username)
-      // axios.request({url:'/login',method:'POST',data:{
-        // nick_name:this.state.username,
-        // password:this.state.password
-      // }})
+      axios.request({url: "http://localhost:8000/login",method:'POST',data:{
+        nick_name:this.state.username,
+        password:this.state.password
+      }}).then(res=>{
+        alert('登录成功')
+      }).catch(err=>{
+        alert('登录失败')
+      })
     }
     handleUsernameChange(e){
       // console.log( e.target.value)

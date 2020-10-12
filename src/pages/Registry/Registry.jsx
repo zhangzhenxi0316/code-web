@@ -26,6 +26,10 @@ class Registry extends Component {
     this.handleRegistrySubmit = this.handleRegistrySubmit.bind(this);
   }
   handleRegistrySubmit(e) {
+    if(this.state.username===''&&this.state.password===''&& this.state.email===''){
+      alert('请完整填写资料')
+      return
+    }
     e.preventDefault();
     let data = {
       passwords:this.state.password,
@@ -33,15 +37,21 @@ class Registry extends Component {
       nick_name:this.state.username
     }
     if(this.state.role===1){
+      if(this.stuId===''){
+        alert('请输入学号')
+        return
+      }
       // 学生
       data.student_id = this.state.stuId
     }
     axios.request({
-      url: "/registry",
+      url: "http://localhost:8000/registry",
       method: "POST",
       data: data,
     }).then(res=>{
-      console.log('注册成功')
+      alert('注册成功')
+    }).catch(err=>{
+      alert('注册失败')
     });
   }
   handleRoleChange(e) {
