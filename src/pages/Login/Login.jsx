@@ -8,8 +8,6 @@ class Login extends Component {
     constructor(props){
         super(props)
         this.state={
-            width:'',
-            height:'',
             username:'',
             password:''
         }
@@ -19,6 +17,7 @@ class Login extends Component {
 
     }
     handleLoginSubmit(e){
+      console.dir(this.state)
       if(this.state.username===''&&this.state.password===''){
         alert('用户名密码为空')
         return
@@ -46,11 +45,7 @@ class Login extends Component {
       }) 
     }
   componentDidMount(){
-      let width = document.body.clientWidth
-      let height = document.body.height
-      this.setState({
-          width,height
-      })
+      
   }
   render() {
     return (
@@ -165,8 +160,6 @@ class Login extends Component {
                 retina_detect:true
             	}}
               style={{
-                width: this.state.width,
-                height:this.state.height,
                 backgroundColor: "#3F9497" 
               }}
             />

@@ -13,8 +13,6 @@ class Registry extends Component {
       stuId: "",
       username: "",
       password: "",
-      width: "",
-      height: "",
       role: 0,
       email: "",
     };
@@ -26,6 +24,7 @@ class Registry extends Component {
     this.handleRegistrySubmit = this.handleRegistrySubmit.bind(this);
   }
   handleRegistrySubmit(e) {
+    console.dir(this.state)
     if(this.state.username===''&&this.state.password===''&& this.state.email===''){
       alert('请完整填写资料')
       return
@@ -42,10 +41,10 @@ class Registry extends Component {
         return
       }
       // 学生
-      data.student_id = this.state.stuId
+      data.student_id = this.state.stuId.toString()
     }
     axios.request({
-      url: "http://localhost:8000/registry",
+      url: "http://localhost:8000/user/registry",
       method: "POST",
       data: data,
     }).then(res=>{
@@ -62,7 +61,7 @@ class Registry extends Component {
   }
   handleEmailChange(e) {
     this.setState({
-      email: parseInt(e),
+      email:e.target.value
     });
   }
   handleUsernameChange(e) {
@@ -82,15 +81,10 @@ class Registry extends Component {
     });
   }
   componentDidMount() {
-    let width = document.body.clientWidth;
-    let height = document.body.height;
-    this.setState({
-      width,
-      height,
-    });
+  
   }
   render() {
-    let { username, password, stuId, role } = this.state;
+    let {  role } = this.state;
     return (
       <div className="main">
          <Particles  className="body"
@@ -242,7 +236,7 @@ class Registry extends Component {
                 {/* <i className="iconfont">&#xe63f;</i> */}
                 <input
                   className="input"
-                  type="number"
+                  type="text"
                   onChange={this.handleStuChange}
                   value={this.state.stuId}
                   placeholder="请输入学号"
