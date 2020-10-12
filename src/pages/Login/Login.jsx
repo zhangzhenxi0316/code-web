@@ -24,7 +24,7 @@ class Login extends Component {
       }
       e.preventDefault()
       console.log(this.state.username)
-      axios.request({url: "http://localhost:8000/login",method:'POST',data:{
+      axios.request({url: "http://localhost:8000/user/login",method:'POST',data:{
         nick_name:this.state.username,
         password:this.state.password
       }}).then(res=>{
