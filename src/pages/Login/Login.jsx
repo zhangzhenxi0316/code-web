@@ -35,7 +35,7 @@ class Login extends Component {
       console.log(this.state.username)
       axios.request({url: "http://localhost:8000/user/login/",method:'POST',data:{
         nick_name:this.state.username,
-        password:this.state.password
+        passwords:this.state.password
       }}).then(res=>{
         if(res.status===200){
           this.setState({

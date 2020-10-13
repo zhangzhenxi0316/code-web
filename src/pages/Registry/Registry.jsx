@@ -42,7 +42,9 @@ class Registry extends Component {
     e.preventDefault();
     var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
     let email = this.state.email
-    
+    if(this.state.current===false){ 
+      return
+    }
     // console.dir(this.state)
     if(this.state.username===''||this.state.password===''|| this.state.email===''|| this.state.currentPassword===''){
       // console.log('asdfasdf')
