@@ -33,11 +33,11 @@ class Login extends Component {
       }
       
       console.log(this.state.username)
-      axios.request({url: "http://localhost:8000/user/login",method:'POST',data:{
+      axios.request({url: "http://localhost:8000/user/login/",method:'POST',data:{
         nick_name:this.state.username,
         password:this.state.password
       }}).then(res=>{
-        if(res.data.status===200){
+        if(res.status===200){
           this.setState({
             loginStatus:{
               type:'success',
@@ -47,11 +47,18 @@ class Login extends Component {
           setTimeout(()=>{
             this.props.history.push('/index')
           },500)
-        }else{
+        }else if(res.status===206){
           this.setState({
             loginStatus:{
               type:'error',
               msg:'用户名密码不正确'
+            }
+          })
+        }else{
+          this.setState({
+            loginStatus:{
+              type:'error',
+              msg:'登录失败'
             }
           })
         }

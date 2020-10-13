@@ -79,11 +79,11 @@ class Registry extends Component {
       return
     }
     axios.request({
-      url: "http://localhost:8000/user/registry",
+      url: "http://localhost:8000/user/register/",
       method: "POST",
       data: data,
     }).then(res=>{
-      if(res.data.status===200){
+      if(res.status===200){
         this.setState({
           registryStatus:{
             type:'success',
@@ -93,14 +93,20 @@ class Registry extends Component {
         setTimeout(()=>{
           this.props.history.push('/user/login')
         },600)
-      }else{
+      }else if (res.status===206) {
+        this.setState({
+          registryStatus:{
+            type:'error',
+            msg:'昵称或者学号已经被注册'
+          }
+        })
+      }else if(res.status===400){
         this.setState({
           registryStatus:{
             type:'error',
             msg:'注册失败'
           }
         })
-        
       }
     }).catch(err=>{
       this.setState({
