@@ -7,16 +7,23 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
+import Home from './pages/Home/Home.jsx'
 class App extends Component {
   
   render() {
     return (
       <Router>
       
+      <Redirect from="/" to="/home"></Redirect>
 
-      <Switch>
+      
+        <Route  path="/home">
+          <Home></Home>
+        </Route>
+        <Switch>
           <Route path="/user/login">
           <Login ></Login>
           </Route>
