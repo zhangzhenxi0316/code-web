@@ -1,9 +1,5 @@
 .page{
-    background: #f7f7f7;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
+    background: #f1f1f1;
+   
     /* color:var(--color) */
 }
