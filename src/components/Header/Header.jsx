@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { HeaderWrapper, HeaderContain, LoginWapper } from "./Header.js";
 import "./Header.css";
 import { Link,NavLink } from "react-router-dom";
-class Header extends Component {
+export default class Header extends Component {
   render() {
     return (
-      <HeaderWrapper>
+      <HeaderWrapper current>
         <HeaderContain>
           <div className="logoWrapper">
             <div className="logo">onLine</div>
@@ -38,4 +38,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+// export default Header;

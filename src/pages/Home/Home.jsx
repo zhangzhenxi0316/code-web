@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../../components/Header/Header'
+import Header from '../../components/Header/Header.jsx'
 import './Home.css'
 import {Route} from 'react-router-dom'
-import Index from './Index/Index'
-import Talk from './Talk/Talk'
+import Index from './Index/Index.jsx'
+import Talk from './Talk/Talk.jsx'
 class Home extends Component {
     render() {
         return (
