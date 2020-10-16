@@ -31,13 +31,14 @@
 .hot_test .hot_test_title {
   display: flex;
   align-items: center;
-  color: #3F9497;
+  color: #687575;
   font-size: 16px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
   box-sizing: border-box;
 }
 .hot_test .hot_test_item {
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
   padding: 0 5px;
   height: 40px;
   display: flex;
@@ -51,7 +52,7 @@
   font-size: 15px;
 }
 .hot_test .hot_test_item .hot_test_item_author {
-  flex: 2;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,7 +70,7 @@
   padding: 5px 15px;
 }
 .hot-article .hot-article-title {
-  color: #3F9497;
+  color: #687575;
   font-size: 16px;
   height: 40px;
   display: flex;
@@ -85,7 +86,7 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
   width: 30%;
   height: 280px;
-  border: 1px solid #3F9497;
+  border: 1px solid #687575;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -95,13 +96,13 @@
   transform: scale(1.05);
 }
 .hot-article .hot-article-items .hot-article-item .hot-article-item-title {
-  color: #3F9497;
+  color: #687575;
   font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
-  border-bottom: 1px solid #3F9497;
+  border-bottom: 1px solid #687575;
 }
 .hot-article .hot-article-items .hot-article-item .hot-article-item-main {
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
@@ -110,7 +111,7 @@
   height: 220px;
   margin: 10px;
   font-size: 15px;
-  border: 1px solid #3F9497;
+  border: 1px solid #687575;
   box-sizing: border-box;
 }
 .race {
@@ -123,7 +124,7 @@
 .race .race_title {
   height: 40px;
   font-size: 16px;
-  color: #3F9497;
+  color: #687575;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,13 +168,14 @@
 .all_test .all_test_title {
   display: flex;
   align-items: center;
-  color: #3F9497;
+  color: #687575;
   font-size: 16px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
   box-sizing: border-box;
 }
 .all_test .all_test_item {
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
   padding: 0 15px;
   height: 40px;
   display: flex;

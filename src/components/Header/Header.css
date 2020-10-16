@@ -1,12 +1,14 @@
 .logo{
-    font-size:17px;
+    font-size:20px;
+    color:#687575;
     height: 60%;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
     border-right: 2px solid #ccc;
     padding-right: 10px;
+    text-shadow:3px 3px #cccccc;
 }
 .tabWrapper{
     display: flex;
@@ -40,6 +42,10 @@ align-items:center;
     box-sizing: border-box;
     color: #fff;
 }
+.item:hover{
+    border-radius: 5px;
+    transition: all .5s;
+}
 .iconfont{
     margin-right: 5px;
 }
@@ -52,8 +58,17 @@ align-items:center;
 font-size:16px;
 height:100%;
 }
+.link:hover{
+    font-size: 18px;
+    transition: all .5s;
+    /* color: #fff; */
+color: #000;
+}
 .current{
     background:#687575;
     color:#fff;
 
+}
+.current:hover{
+    color: #fff;
 }

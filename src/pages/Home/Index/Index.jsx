@@ -20,11 +20,11 @@ class Index extends Component {
     }
   }
   componentDidMount(){
-    Axios.request({url:'http://localhost:3000/task',method:"GET"}).then(res=>{
+    Axios.request({url:'http://localhost:8000/task',method:"GET"}).then(res=>{
       console.log(res)
 
     }).catch(err=>{
-      alert('网页请求失败')
+      // alert('网页请求失败')
     })
   }
   render() {

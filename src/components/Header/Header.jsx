@@ -11,7 +11,7 @@ export default class Header extends Component {
             <div className="logo">OnlineCoding</div>
             <div className="tabWrapper">
               {/* <Tab > */}
-                  <NavLink className="link" exact activeClassName="current" to="/home">首页</NavLink>
+                  <NavLink className="link" exact activeClassName="current"  to="/home">首页</NavLink>
               {/* </Tab> */}
               {/* <Tab > */}
                   <NavLink className="link" activeClassName="current" to="/home/talk">论坛</NavLink>
