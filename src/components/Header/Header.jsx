@@ -8,7 +8,7 @@ export default class Header extends Component {
       <HeaderWrapper current>
         <HeaderContain>
           <div className="logoWrapper">
-            <div className="logo">onLine</div>
+            <div className="logo">OnlineCoding</div>
             <div className="tabWrapper">
               {/* <Tab > */}
                   <NavLink className="link" exact activeClassName="current" to="/home">首页</NavLink>
