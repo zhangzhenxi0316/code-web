@@ -45,7 +45,7 @@ class Login extends Component {
             }
           })
           setTimeout(()=>{
-            this.props.history.push('/index')
+            this.props.history.push('/home')
           },500)
         }else if(res.status===206){
           this.setState({

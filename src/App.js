@@ -11,26 +11,30 @@ import {
   Redirect
 } from "react-router-dom";
 import Home from './pages/Home/Home.jsx'
+import Write from './pages/Write/Write.jsx'
 class App extends Component {
   
   render() {
     return (
       <Router>
       
-      <Redirect from="/" to="/home"></Redirect>
+      {/* <Redirect exact from="/" to="/home"></Redirect> */}
 
       
-        <Route  path="/home">
-          <Home></Home>
-        </Route>
+        
         <Switch>
-          <Route path="/user/login">
+          <Route exact path="/user/login">
           <Login ></Login>
           </Route>
-          <Route path="/user/registry">
+          <Route  exact path="/user/registry">
             <Registry  />
           </Route>
-          
+          <Route exact path="/user/write">
+          <Write></Write>
+          </Route>
+          <Route   path="/">
+          <Home></Home>
+        </Route>
         </Switch>
       </Router>
       

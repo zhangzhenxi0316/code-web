@@ -10,10 +10,10 @@ class Home extends Component {
             <div className="page"> 
                 <Header></Header>
                
-             <Route exact path="/home">
+             <Route exact  path="/">
             <Index></Index>
              </Route>
-             <Route  path="/home/talk">
+             <Route  path="/talk">
             <Talk></Talk>
              </Route>
             </div>

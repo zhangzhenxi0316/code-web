@@ -19,7 +19,7 @@
 }
 .hot_test {
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
-  width: 27vw ;
+  width: 27vw;
   height: 230px;
   background: #fff;
   display: flex;
@@ -29,6 +29,7 @@
   justify-content: space-around;
 }
 .hot_test .hot_test_title {
+  font-weight: 700;
   display: flex;
   align-items: center;
   color: #687575;
@@ -50,6 +51,10 @@
 .hot_test .hot_test_item .hot_test_item_title {
   flex: 1;
   font-size: 15px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 .hot_test .hot_test_item .hot_test_item_author {
   flex: 1;
@@ -59,6 +64,12 @@
   border-left: 1px solid #ccc;
   height: 70%;
   font-size: 12px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-height: 28px;
+  -webkit-line-clamp: 1;
+  text-align: center;
+  overflow: hidden;
 }
 .hot-article {
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
@@ -70,6 +81,7 @@
   padding: 5px 15px;
 }
 .hot-article .hot-article-title {
+  font-weight: 700;
   color: #687575;
   font-size: 16px;
   height: 40px;
@@ -84,6 +96,7 @@
 }
 .hot-article .hot-article-items .hot-article-item {
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
+  font-weight: 700;
   width: 30%;
   height: 280px;
   border: 1px solid #687575;
@@ -122,6 +135,7 @@
   flex-direction: column;
 }
 .race .race_title {
+  font-weight: 700;
   height: 40px;
   font-size: 16px;
   color: #687575;
@@ -156,7 +170,7 @@
 }
 .all_test {
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
-  margin: 15px 0 ;
+  margin: 15px 0;
   height: 230px;
   background: #fff;
   display: flex;
@@ -166,6 +180,7 @@
   justify-content: space-around;
 }
 .all_test .all_test_title {
+  font-weight: 700;
   display: flex;
   align-items: center;
   color: #687575;
@@ -197,4 +212,3 @@
   height: 70%;
   font-size: 12px;
 }
-/*# sourceMappingURL=./Index.css.map */
