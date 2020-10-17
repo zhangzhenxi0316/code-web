@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home/Home.jsx'
 import Write from './pages/Write/Write.jsx'
+import Background from "./pages/Background/Background.jsx";
 class App extends Component {
   
   render() {
@@ -31,6 +32,9 @@ class App extends Component {
           </Route>
           <Route exact path="/user/write">
           <Write></Write>
+          </Route>
+          <Route path="/tea/background">
+            <Background></Background>
           </Route>
           <Route   path="/">
           <Home></Home>
