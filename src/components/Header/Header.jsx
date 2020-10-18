@@ -60,6 +60,6 @@ export default class Header extends Component {
       </HeaderWrapper>
     );
   }
-}
+} 
 
 // export default Header;
