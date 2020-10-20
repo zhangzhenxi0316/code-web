@@ -3,6 +3,13 @@ form {
   flex-direction: column;
   width: 100%;
 }
+form .select {
+  height: 30px;
+  border-radius: 0;
+  margin-left: 20px;
+  border-color: #687575;
+  width: 150px;
+}
 .content-title {
   display: flex;
   margin-bottom: 30px;

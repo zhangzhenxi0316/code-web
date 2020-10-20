@@ -60,17 +60,28 @@ class Write extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="write">
         <div className="header">
-          <div className="header_title">写文章</div>
-          <div className="btn_warpper">
+          <div className="write_title">
+          <span className="title_name">
+           标题：
+          </span>
+          <input type="text" className="write_title_input"/>
+          </div>
+          
+          <div className="des">
+          <span className="des_title">描述：</span>
+        <textarea className="des_textarea"></textarea>
+        </div>
+        <div className="btn_warpper">
             <div className="btn_item">发布</div>
             <div className="btn_item">取消</div>
           </div>
         </div>
-        <MdEditor
+        
+        <MdEditor className="MdEditor"
           value={this.state.content}
-          style={{ height: "90vh" }}
+          style={{ height: "100vh" ,width:'70vw'}}
           renderHTML={(text) => mdParser.render(text)}
           onChange={this.handleEditorChange}
           config={{

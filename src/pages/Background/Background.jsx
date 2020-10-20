@@ -11,6 +11,7 @@ import {
 import './Background.css'
 import { Link, Route } from 'react-router-dom';
 import Push from './Push/Push.jsx'
+
 const { Header, Sider, Content } = Layout;
 class Background extends Component {
     constructor(props){
