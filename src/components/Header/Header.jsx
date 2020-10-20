@@ -28,15 +28,17 @@ export default class Header extends Component {
               <div className="login_Wrapper">
               {this.state.isLogin?
               <Link className="login-item" to="/user/login">
-              <div className="item">
-               
-                  zzx</div>
+                <div className="item">
+                <i className="iconfont">&#xe668;</i>
+                  登录
+                  </div>
+              
             </Link>
             :
             <div className="login-item" >
               <div className="item">
-                <i className="iconfont">&#xe668;</i>
-                  登录</div>
+               
+               zzx</div>
             </div>
             }
            {this.state.isLogin && <div className="tablist">
