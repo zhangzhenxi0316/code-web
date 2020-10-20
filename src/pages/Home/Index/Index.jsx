@@ -67,7 +67,7 @@ class Index extends Component {
 
                if(index<=2) return (
                   <div className="hot_test_item">
-                    <div className="hot_test_item_title">item.title</div>
+                    <div className="hot_test_item_title">{item.title}</div>
                     <div className="hot_test_item_author">
                       作者：{item.to_user} 时间：{item.c_time.slice(0,10)+item.c_time.slice(11,19)}
                     </div>
@@ -90,8 +90,8 @@ class Index extends Component {
                     data-author={item.author}
                     data-c_time={item.c_time}
                   >
-                    <div className="hot-article-item-title">item.title</div>
-                    <div className="hot-article-item-main">item.des</div>
+                    <div className="hot-article-item-title">{item.title}</div>
+                    <div className="hot-article-item-main">{item.des}</div>
                   </div>
                 );
               })}

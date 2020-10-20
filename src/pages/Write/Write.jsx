@@ -5,10 +5,14 @@ import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
 // import style manually
 import "react-markdown-editor-lite/lib/index.css";
+import Axios from "axios";
+import {withRouter} from 'react-router-dom'
+import { Popconfirm,message} from 'antd'
+
 const hljs = require("highlight.js");
+
 // Register plugins if required
 // MdEditor.use(YOUR_PLUGINS_HERE);
-
 // Initialize a markdown parser
 const mdParser = new MarkdownIt({
   html: true,
@@ -44,12 +48,41 @@ class Write extends Component {
     super(props);
     this.state = {
       content: "",
+      des:'',
+      title:''
     };
     console.log('a')
-  
+  this.handleDesChange = this.handleDesChange.bind(this)
+  this.handleTitleChange = this.handleTitleChange.bind(this)
     this.handleEditorChange = this.handleEditorChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCancle = this.handleCancle.bind(this)
   }
- 
+  handleSubmit(){
+    Axios.request({url:'http://localhost:8000/article_create/',method:"POST",data:{
+      sessionid:'',
+      title:this.state.title,
+      des:this.state.des,
+      context:this.state.content
+    }}).then(res=>{
+      message.success('文章发布成功')
+    }).catch(err=>{
+      message.error('文章发布失败')
+    })
+  }
+  handleCancle(){
+    this.props.history.push('/')
+  }
+  handleDesChange(e){
+    this.setState({
+      des:e.target.value
+    })
+  }
+  handleTitleChange(e){
+    this.setState({
+      title:e.target.value
+    })
+  }
   handleEditorChange(a, b) {
     // console.log('a',a)
     // console.log(html)
@@ -62,35 +95,46 @@ class Write extends Component {
     return (
       <div className="write">
         <div className="header">
-          <div className="write_title">
+         
+          
+          <div className="des">
+          <div className="des_title">描述：</div>
+        <textarea className="des_textarea" value={this.state.des} onChange={this.handleDesChange}></textarea>
+        </div>
+        <div className="btn_warpper">
+            <div className="btn_item" onClick={this.handleSubmit}>发布</div>
+            <Popconfirm
+    title="确认离开吗，你将失去所写内容"
+    onConfirm={this.handleCancle}
+    onCancel={()=>{return ;}}
+    okText="Yes"
+    cancelText="No"
+  >
+     <div className="btn_item" >取消</div>
+  </Popconfirm>
+           
+          </div>
+        </div>
+        <div className="right">
+        <div className="write_title">
           <span className="title_name">
            标题：
           </span>
-          <input type="text" className="write_title_input"/>
+          <input type="text" className="write_title_input" value={this.state.title} onChange={this.handleTitleChange}/>
           </div>
-          
-          <div className="des">
-          <span className="des_title">描述：</span>
-        <textarea className="des_textarea"></textarea>
-        </div>
-        <div className="btn_warpper">
-            <div className="btn_item">发布</div>
-            <div className="btn_item">取消</div>
-          </div>
-        </div>
-        
         <MdEditor className="MdEditor"
           value={this.state.content}
-          style={{ height: "100vh" ,width:'70vw'}}
+          style={{ height: "90vh" ,width:'100%'}}
           renderHTML={(text) => mdParser.render(text)}
           onChange={this.handleEditorChange}
           config={{
             shortcuts: true,
           }}
         />
+        </div>
       </div>
     );
   }
 }
 
-export default Write;
+export default withRouter(Write) ;

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./Push.css";
-
+import { message, Button, Space } from 'antd';
 // code
 import {Controlled as CodeMirror} from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 // import "codemirror/mode/cmake/cmake";
-import { Select } from "antd";
+import { Select,Alert } from "antd";
+import Axios from "axios";
 const { Option } = Select;
 require('codemirror/mode/xml/xml');
 require('codemirror/mode/markdown/markdown');
@@ -27,12 +28,14 @@ class Push extends Component {
       value:'',
       title:'',
       des:'',
-      mode:'javascript'
+      mode:'javascript',
+      submitStatus:{}
     }
 this.handleChange = this.handleChange.bind(this)
 this.handleTitleChange = this.handleTitleChange.bind(this)
 this.handleDesChange = this.handleDesChange.bind(this)
 this.handleModeChange = this.handleModeChange.bind(this)
+this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleModeChange(e){
     console.log(e)
@@ -55,9 +58,26 @@ this.setState({
             this.setState({ value });
 
   }
+  handleSubmit(e){
+    e.preventDefault()
+    Axios.request({url:'http://localhost:8000/task_create/',method:"POST",data:{
+      sessionid:'',
+      title:this.state.title,
+      descriptions:this.state.des,
+      demo_scripts:this.state.value
+    }}).then(res=>{
+      message.success('发布成功')
+      
+    }).catch(err=>{
+      message.error('发布失败')
+     
+    })
+  }
   render() {
     return (
-      <form>
+      
+      <form onSubmit={this.handleSubmit}>
+       
         <div className="content-title">
           <label htmlFor="content-input-title">题目:</label>
           <input
@@ -81,7 +101,7 @@ this.setState({
         <div className="codeSelectWrapper">
             <Select
               defaultValue="javascript"
-              className="select"
+              className="push-select"
               onChange={this.handleModeChange}
             >
               <Option className="option" value="javascript">

@@ -58,14 +58,11 @@
 .select {
   width: 80px;
   overflow: hidden;
-  border: 2px solid #687575;
+  border: 2px solid #3F9497;
   border-radius: 10px;
   padding: 5px 40px;
   font-size: 15px;
   outline-style: none ;
-}
-.select .option {
-  background: red;
 }
 .icon-querenzhengque {
   color: #158015 !important;

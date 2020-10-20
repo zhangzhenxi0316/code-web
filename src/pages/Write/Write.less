@@ -4,39 +4,56 @@
         // flex: 30;
         // width: 100px;
     // }
+    justify-content: space-between;
+}
+.right{
+   
+    width: 80vw;
+}
+.write_title{
+    height:10vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    border-bottom: 5px solid #687575;
+    background: #687575;
+    
+    .title_name{
+        font-size: 30px;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // color: #687575;
+    }
+    .write_title_input{
+        
+        font-size: 20px;
+        text-align: center;
+        width: 50%;
+        border: none;
+        border-bottom: 2px solid #fff;
+        outline: none;
+        background: none;
+        color: #fff;
+    }
 }
 .header{
-    width: 30vw;
+    // box-sizing: border-box;
+    width: 20vw;
     position: relative;
-    // height: 10vh;
+    height: 100vh;
+    // padding-top: 10vh;
     font-size: 20px;
     font-weight: 700;
     display: flex;
     flex-direction: column;
-    padding: 20px 10px;
+    padding: 10vh 10px;
+    // border-right: 5px solid #687575;
     // justify-content: center;
     // align-items: center;
     // margin-bottom: 20px;
-    .write_title{
-        display: flex;
-        .title_name{
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #687575;
-        }
-        .write_title_input{
-            flex:4;
-            font-size: 20px;
-            text-align: center;
-            // width: 70%;
-            border: none;
-            border-bottom: 2px solid #687575;
-            outline: none;
-            color: #687575;
-        }
-    }
+    
     
     .btn_warpper{
         // position: absolute;
@@ -50,6 +67,7 @@
         justify-content: space-around;
         font-size: 16px;
         .btn_item{
+            cursor: pointer;
             margin-left: 10px;
             border: 3px solid #687575;
             color: #687575;
@@ -64,27 +82,28 @@
 }
 .des{
         color: #687575;
-        display: flex;
+        // display: flex;
     // height: 10vh;
     font-size: 20px;
     font-weight: 700;
     // justify-content: center;
     margin-top: 20px;
     .des_title{
-        flex: 1;
+        // flex: 1;
             display: flex;
             justify-content: center;
             // align-items: center;
             color: #687575;
+            margin-bottom: 30px;
     }
     .des_textarea{
-        flex: 4;
-
+        // flex: 4;
+        width: 100%;
         height: 400px;
         // width: 30vw;
         outline: none;
         font-size: 15px;
-        border: 2px solid #687575;
+        border: 5px solid #687575;
 
     }
 }
