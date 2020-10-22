@@ -13,6 +13,7 @@ import {
 import Home from './pages/Home/Home.jsx'
 import Write from './pages/Write/Write.jsx'
 import Background from "./pages/Background/Background.jsx";
+import {getCookie} from './util/getCookie'
 class App extends Component {
   
   render() {
@@ -31,7 +32,8 @@ class App extends Component {
             <Registry  />
           </Route>
           <Route exact path="/user/write">
-          <Write></Write>
+            {getCookie('nick_name')===''?<Redirect to="/user/login"/>:<Write></Write>}
+          
           </Route>
           <Route path="/tea/background">
             <Background></Background>
