@@ -18,6 +18,7 @@ class Index extends Component {
     this.state = {
       taskList: [],
       articleList: [],
+     
     };
   }
   componentDidMount() {
@@ -66,7 +67,7 @@ class Index extends Component {
               {this.state.taskList.map((item, index) => {
 
                if(index<=2) return (
-                  <div className="hot_test_item">
+                  <div className="hot_test_item" key={item.c_time}>
                     <div className="hot_test_item_title">{item.title}</div>
                     <div className="hot_test_item_author">
                       作者：{item.to_user} 时间：{item.c_time.slice(0,10)+item.c_time.slice(11,19)}
@@ -85,6 +86,7 @@ class Index extends Component {
               {this.state.articleList.map((item, index) => {
                 return (
                   <div
+                  key={item.id}
                     className="hot-article-item"
                     data-id={item.id}
                     data-author={item.author}

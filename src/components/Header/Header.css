@@ -28,6 +28,7 @@
   justify-content: center;
   /* height: 100%; */
   color: #000;
+  cursor: pointer;
 }
 .login_Wrapper {
   height: 100%;
@@ -93,9 +94,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .tablist_item:hover {
   background: #000;
   color: #fff;
   transition: all 0.8s;
 }
+/*# sourceMappingURL=./Header.css.map */
