@@ -3,7 +3,7 @@ import "./Login.css";
 import Particles from 'react-particles-js';
 import {Link} from 'react-router-dom'
 import {LoginWrapper,Header,Tab,Item,Btn} from './Login'
-import axios from 'axios'
+import axios from '../../util/index'
 import { Alert } from "antd";
 import {withRouter} from 'react-router-dom'
 class Login extends Component {

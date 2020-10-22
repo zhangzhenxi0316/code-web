@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Index.css";
 import { Main, Side, Show } from "./Index.js";
 import { Carousel } from "antd";
-import Axios from "axios";
+import Axios from "../../../util/index";
 // import 'antd/dist/antd.min.css';
 
 const contentStyle = {

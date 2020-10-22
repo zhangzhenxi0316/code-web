@@ -5,7 +5,7 @@ import { LoginWrapper, Header, Tab, Item, Btn } from "./Registry";
 import { Link } from "react-router-dom";
 import { Select,Alert } from "antd";
 import {withRouter} from 'react-router-dom'
-import axios from "axios";
+import axios from "../../util/index";
 const { Option } = Select;
 class Registry extends Component {
   constructor(props) {

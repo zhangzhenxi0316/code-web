@@ -7,7 +7,7 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 // import "codemirror/mode/cmake/cmake";
 import { Select,Alert } from "antd";
-import Axios from "axios";
+import Axios from "../../../util/index";
 const { Option } = Select;
 require('codemirror/mode/xml/xml');
 require('codemirror/mode/markdown/markdown');

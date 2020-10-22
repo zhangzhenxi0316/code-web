@@ -27,19 +27,20 @@ export default class Header extends Component {
           <LoginWapper>
               <div className="login_Wrapper">
               {this.state.isLogin?
-              <Link className="login-item" to="/user/login">
+               <div className="login-item" >
+               <div className="item">
+                
+                zzx</div>
+             </div>
+            :
+            <Link className="login-item" to="/user/login">
                 <div className="item">
                 <i className="iconfont">&#xe668;</i>
                   登录
                   </div>
               
             </Link>
-            :
-            <div className="login-item" >
-              <div className="item">
-               
-               zzx</div>
-            </div>
+           
             }
            {this.state.isLogin && <div className="tablist">
                 <Link className="tablist_item">后台</Link>
