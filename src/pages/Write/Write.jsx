@@ -60,7 +60,6 @@ class Write extends Component {
   }
   handleSubmit(){
     Axios.request({url:'http://localhost:8000/article_create/',method:"POST",data:{
-      sessionid:'',
       title:this.state.title,
       des:this.state.des,
       context:this.state.content

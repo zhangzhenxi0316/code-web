@@ -21,6 +21,7 @@ export default class Header extends Component {
   }
   componentDidMount() {
     let name = getCookie("nick_name");
+    
     // console.log(name==='')
     if (name !== "") {
       this.setState({
@@ -61,7 +62,7 @@ export default class Header extends Component {
             <div className="login_Wrapper">
               {this.state.isLogin ? (
                 <div className="login-item">
-                  <div className="item">zzx</div>
+                  <div className="item">{this.state.nick_name}</div>
                 </div>
               ) : (
                 <Link className="login-item" to="/user/login">
