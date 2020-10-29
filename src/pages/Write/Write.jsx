@@ -5,7 +5,7 @@ import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
 // import style manually
 import "react-markdown-editor-lite/lib/index.css";
-import Axios from "axios";
+import Axios from "../../util/index";
 import {withRouter} from 'react-router-dom'
 import { Popconfirm,message} from 'antd'
 
@@ -60,7 +60,6 @@ class Write extends Component {
   }
   handleSubmit(){
     Axios.request({url:'http://localhost:8000/article_create/',method:"POST",data:{
-      sessionid:'',
       title:this.state.title,
       des:this.state.des,
       context:this.state.content

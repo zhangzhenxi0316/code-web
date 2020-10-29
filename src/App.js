@@ -15,7 +15,9 @@ import Write from './pages/Write/Write.jsx'
 import Background from "./pages/Background/Background.jsx";
 import {getCookie} from './util/getCookie'
 class App extends Component {
-  
+  componentDidMount(){
+    
+  }
   render() {
     return (
       <Router>
@@ -38,7 +40,7 @@ class App extends Component {
           <Route path="/tea/background">
             <Background></Background>
           </Route>
-          <Route   path="/">
+          <Route  path="/">
           <Home></Home>
         </Route>
         </Switch>
