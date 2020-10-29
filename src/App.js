@@ -14,9 +14,10 @@ import Home from './pages/Home/Home.jsx'
 import Write from './pages/Write/Write.jsx'
 import Background from "./pages/Background/Background.jsx";
 import {getCookie} from './util/getCookie'
+// import Detail from './pages/Detail/Detail.jsx'
 class App extends Component {
   componentDidMount(){
-    
+    console.log(getCookie('nick_name'))
   }
   render() {
     return (
@@ -34,9 +35,11 @@ class App extends Component {
             <Registry  />
           </Route>
           <Route exact path="/user/write">
-            {getCookie('nick_name')===''?<Redirect to="/user/login"/>:<Write></Write>}
-          
+            <Write></Write>
           </Route>
+          {/* <Route exact path="/task/detail/:id">
+            <Detail></Detail>
+          </Route> */}
           <Route path="/tea/background">
             <Background></Background>
           </Route>

@@ -4,7 +4,7 @@ import { Main, Side, Show } from "./Index.js";
 import { Carousel } from "antd";
 import Axios from "axios";
 // import 'antd/dist/antd.min.css';
-
+import {Link} from 'react-router-dom'
 const contentStyle = {
   height: "160px",
   color: "#fff",
@@ -67,12 +67,12 @@ class Index extends Component {
               {this.state.taskList.map((item, index) => {
 
                if(index<=2) return (
-                  <div className="hot_test_item" key={item.c_time}>
+                  <Link className="hot_test_item" key={item.c_time} to={"/task/detail/"+item.id}>
                     <div className="hot_test_item_title">{item.title}</div>
                     <div className="hot_test_item_author">
-                      作者：{item.to_user} 时间：{item.c_time.slice(0,10)+item.c_time.slice(11,19)}
+                      作者：{item.to_user}
                     </div>
-                  </div>
+                  </Link>
                 );
                 else{return null}
               })}

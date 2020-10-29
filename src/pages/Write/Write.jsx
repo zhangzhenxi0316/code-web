@@ -8,7 +8,8 @@ import "react-markdown-editor-lite/lib/index.css";
 import Axios from "../../util/index";
 import {withRouter} from 'react-router-dom'
 import { Popconfirm,message} from 'antd'
-
+import {getCookie} from '../../util/getCookie'
+import {Redirect} from 'react-router-dom'
 const hljs = require("highlight.js");
 
 // Register plugins if required
@@ -51,7 +52,7 @@ class Write extends Component {
       des:'',
       title:''
     };
-    console.log('a')
+    // console.log('a')
   this.handleDesChange = this.handleDesChange.bind(this)
   this.handleTitleChange = this.handleTitleChange.bind(this)
     this.handleEditorChange = this.handleEditorChange.bind(this);
@@ -92,6 +93,8 @@ class Write extends Component {
   }
   render() {
     return (
+    getCookie('nick_name')===''?<Redirect to="/user/login"/>:
+
       <div className="write">
         <div className="header">
          

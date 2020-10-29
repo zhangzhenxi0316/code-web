@@ -6,7 +6,7 @@ import {
   // MenuFoldOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  UploadOutlined,
+  // UploadOutlined,
 } from '@ant-design/icons';
 import './Background.css'
 import { Link, Route } from 'react-router-dom';
