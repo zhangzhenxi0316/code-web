@@ -5,6 +5,7 @@ import {Route} from 'react-router-dom'
 import Index from './Index/Index.jsx'
 import Talk from './Talk/Talk.jsx'
 import Article from '../Detail/Article/Article.jsx'
+import Task from '../Detail/Task/Task.jsx';
 class Home extends Component {
     render() {
         return (
@@ -20,6 +21,7 @@ class Home extends Component {
              <Route  path="/article/detail/:id">
             <Article></Article>
              </Route>
+             <Route path="/task/detail/:id" component={Task}></Route>
             </div>
         );
     }

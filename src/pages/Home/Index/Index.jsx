@@ -4,7 +4,7 @@ import { Main, Side, Show } from "./Index.js";
 import { Carousel } from "antd";
 import Axios from "../../../util/index";
 // import 'antd/dist/antd.min.css';
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 const contentStyle = {
   height: "160px",
   color: "#fff",
@@ -18,13 +18,12 @@ class Index extends Component {
     this.state = {
       taskList: [],
       articleList: [],
-     
     };
   }
   componentDidMount() {
     Axios.request({ url: "http://localhost:8000/task", method: "GET" })
       .then((res) => {
-        //   console.log(res)
+        console.log(res);
         this.setState({
           taskList: res.data,
         });
@@ -65,16 +64,22 @@ class Index extends Component {
               {/* 热门题目 */}
               <div className="hot_test_title">最新题目</div>
               {this.state.taskList.map((item, index) => {
-
-               if(index<=2) return (
-                  <Link className="hot_test_item" key={item.c_time} to={"/task/detail/"+item.id}>
-                    <div className="hot_test_item_title">{item.title}</div>
-                    <div className="hot_test_item_author">
-                      作者：{item.to_user}
-                    </div>
-                  </Link>
-                );
-                else{return null}
+                if (index <= 2)
+                  return (
+                    <Link
+                      className="hot_test_item"
+                      key={item.c_time}
+                      to={"/task/detail/" + item.id}
+                    >
+                      <div className="hot_test_item_title">{item.title}</div>
+                      <div className="hot_test_item_author">
+                        作者：{item.to_user}
+                      </div>
+                    </Link>
+                  );
+                else {
+                  return null;
+                }
               })}
             </div>
             {/* </CarouselShow> */}
@@ -86,14 +91,16 @@ class Index extends Component {
               {this.state.articleList.map((item, index) => {
                 return (
                   <div
-                  key={item.id}
+                    key={item.id}
                     className="hot-article-item"
                     data-id={item.id}
                     data-author={item.author}
                     data-c_time={item.c_time}
                   >
-                    <div className="hot-article-item-title">{item.title}</div>
-                    <div className="hot-article-item-main">{item.des}</div>
+                    <Link to={"/article/detail/" + item.id}>
+                      <div className="hot-article-item-title">{item.title}</div>
+                      <div className="hot-article-item-main">{item.des}</div>
+                    </Link>
                   </div>
                 );
               })}
@@ -103,24 +110,19 @@ class Index extends Component {
             <div className="all_test">
               {/* 热门题目 */}
               <div className="all_test_title">全部题目</div>
-              <div className="all_test_item">
-                <div className="all_test_item_title">python算法</div>
-                <div className="all_test_item_author">
-                  作者：zzx 时间：2018-09-10
-                </div>
-              </div>
-              <div className="all_test_item">
-                <div className="all_test_item_title">python算法</div>
-                <div className="all_test_item_author">
-                  作者：zzx 时间：2018-09-10
-                </div>
-              </div>
-              <div className="all_test_item">
-                <div className="all_test_item_title">python算法</div>
-                <div className="all_test_item_author">
-                  作者：zzx 时间：2018-09-10
-                </div>
-              </div>
+              {this.state.taskList.map((item, index) => {
+                return (
+                  <Link key={item.c_time} to={'/task/detail/'+item.id}>
+                  <div className="all_test_item">
+                    <div className="all_test_item_title">{item.title}</div>
+                    <div className="all_test_item_author">
+                    作者：{item.to_user} 时间：{item.c_time}
+                    </div>
+                  </div>
+                  </Link>
+                  
+                );
+              })}
             </div>
           </div>
         </Main>

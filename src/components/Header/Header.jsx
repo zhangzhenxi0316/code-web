@@ -74,10 +74,10 @@ export default class Header extends Component {
               )}
               {this.state.isLogin && (
                 <div className="tablist">
-                  <Link className="tablist_item">后台</Link>
-                  <Link className="tablist_item">修改密码</Link>
-                  <Link className="tablist_item">我的</Link>
-                  <Link className="tablist_item">写文章</Link>
+                  <Link to="/tea/background" className="tablist_item">后台</Link>
+                  <Link to="#" className="tablist_item">修改密码</Link>
+                  <Link to="#" className="tablist_item">我的</Link>
+                  <Link to="#" className="tablist_item">写文章</Link>
                   <div className="tablist_item" onClick={this.handleLogout}>
                     退出登录
                   </div>

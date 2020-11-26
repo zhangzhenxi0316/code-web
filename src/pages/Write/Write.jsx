@@ -60,11 +60,13 @@ class Write extends Component {
     this.handleCancle = this.handleCancle.bind(this)
   }
   handleSubmit(){
-    Axios.request({url:'http://localhost:8000/article_create/',method:"POST",data:{
+    let data={
       title:this.state.title,
       des:this.state.des,
       context:this.state.content
-    }}).then(res=>{
+    };
+    console.log(data)
+    Axios.request({url:'http://localhost:8000/create_article/',method:"POST",data:data}).then(res=>{
       message.success('文章发布成功')
     }).catch(err=>{
       message.error('文章发布失败')
