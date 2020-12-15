@@ -32,7 +32,7 @@ export default class Task extends Component {
   }
   componentDidMount(){
     // console.log(this.props.match.params.id)
-    Axios.request({url:'http://localhost:8000/task_detial?pk='+this.state.id}).then(res=>{
+    Axios.request({url:'http://localhost:8000/task_detial/'+this.state.id}).then(res=>{
         console.log(res)
         this.setState({
             title:res.title,

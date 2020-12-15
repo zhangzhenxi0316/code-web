@@ -66,7 +66,7 @@ class Write extends Component {
       context:this.state.content
     };
     console.log(data)
-    Axios.request({url:'http://localhost:8000/create_article/',method:"POST",data:data}).then(res=>{
+    Axios.request({url:'http://localhost:8000/article_create/',method:"POST",data:data}).then(res=>{
       message.success('文章发布成功')
     }).catch(err=>{
       message.error('文章发布失败')

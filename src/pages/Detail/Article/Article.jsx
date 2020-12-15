@@ -20,7 +20,7 @@ import axios from '../../../util'
         this.setState({
             id:this.props.match.params.id
         },()=>{
-            axios.request({url:'http://localhost:8000/article_detial?pk='+this.id}).then(res=>{
+            axios.request({url:'http://localhost:8000/article_detial/'+this.id}).then(res=>{
                 console.log(res)
                   this.setState({
                       content:res.content,

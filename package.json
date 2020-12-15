@@ -9,6 +9,7 @@
     "antd": "^4.7.0",
     "axios": "^0.20.0",
     "codemirror": "^5.58.1",
+    "express": "^4.17.1",
     "highlight.js": "^10.2.1",
     "markdown-it": "^12.0.0",
     "react": "^16.13.1",
@@ -21,6 +22,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
+    "socket.io": "^3.0.4",
     "styled-components": "^5.2.0"
   },
   "scripts": {
